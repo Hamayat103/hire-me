@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamed Hasan — Would You Hire Me?</title>
+    <title>Hamed Hasan — Software Developer</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -11,37 +11,71 @@
             background: #0b1220;
             color: #e2e8f0;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
+            padding: 2rem 1rem;
+            line-height: 1.6;
         }
-        .card {
-            max-width: 520px;
-            width: 100%;
-            text-align: center;
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
         }
-        .badge {
-            width: 80px; height: 80px; border-radius: 50%;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2rem; font-weight: 700; color: white;
-            margin: 0 auto 1.5rem;
-        }
-        h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
-        .location { color: #94a3b8; margin-bottom: 2rem; }
-        .bio {
-            background: rgba(255,255,255,0.04);
+        a { color: #60a5fa; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Resume Section */
+        .resume {
+            background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 12px;
-            padding: 1.5rem;
+            padding: 2rem;
             margin-bottom: 2rem;
-            line-height: 1.6;
-            text-align: left;
-            font-size: 0.95rem;
         }
-        .bio strong { color: #fff; }
-        .question { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem; }
+        .resume-header {
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .resume-header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .resume-header .contact {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            word-break: break-all;
+        }
+        .section { margin-bottom: 1.5rem; }
+        .section h2 {
+            font-size: 1.1rem;
+            color: #fff;
+            border-bottom: 2px solid #3b82f6;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .section p, .section li { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 0.5rem; }
+        .section ul { list-style: disc; padding-left: 1.25rem; }
+        .section ul li { margin-bottom: 0.4rem; }
+        .job-title { color: #fff; font-weight: 600; }
+        .job-meta { color: #94a3b8; font-size: 0.85rem; display: block; margin-bottom: 0.5rem; }
+        .stack { color: #60a5fa; font-size: 0.85rem; font-style: italic; }
+
+        /* Interactive Section */
+        .interactive {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+        }
+        .interactive .badge {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; font-weight: 700; color: white;
+            margin: 0 auto 1rem;
+        }
+        .interactive h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .interactive p { color: #94a3b8; margin-bottom: 1.5rem; }
         .buttons { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
         button {
             padding: 0.875rem 1.75rem; border: none; border-radius: 8px;
@@ -59,39 +93,93 @@
             border: 1px solid rgba(255,255,255,0.15);
         }
         #msg { margin-top: 1.5rem; font-size: 1.1rem; min-height: 2rem; font-weight: 500; }
-        .links { margin-top: 2.5rem; font-size: 0.85rem; color: #64748b; }
-        .links a { color: #3b82f6; text-decoration: none; }
         canvas.confetti {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none; z-index: 9999;
+        }
+        @media print {
+            body { background: #fff; color: #000; }
+            .interactive, canvas { display: none; }
         }
     </style>
 </head>
 <body>
     <canvas class="confetti" id="confetti"></canvas>
     
-    <div class="card">
-        <div class="badge">H</div>
-        <h1>Hamed Hasan</h1>
-        <p class="location">Software Developer — Chicago, IL</p>
-        
-        <div class="bio">
-            <p>I have a B.S. in Software Development from Western Governors University and work as a pharmacy technician at CVS. After graduating, I built <strong>PharmaAI</strong>, a real-time drug safety intelligence system using FastAPI and biomedical embeddings. Before that, I built a full scheduling and customer management desktop app in Java 17 and JavaFX.</p>
-            <p style="margin-top:0.75rem">I care about clean APIs, real-world usability, and backend systems that actually help people.</p>
+    <div class="container">
+        <!-- RESUME -->
+        <div class="resume">
+            <div class="resume-header">
+                <h1>Hamed Hasan</h1>
+                <p class="contact">
+                    github.com/Hamayat103 | hamayat103@gmail.com | (708) 737-8235 | Chicago, IL
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Education</h2>
+                <p><span class="job-title">Western Governors University</span> — B.S., Software Development<br>
+                <span class="job-meta">Graduation: July 2025 | Salt Lake City, UT</span></p>
+            </div>
+
+            <div class="section">
+                <h2>Summary</h2>
+                <p>Software developer with hands-on experience building AI-powered backend systems. Designed and built PharmaAI, a real-time drug safety intelligence system built on a custom RAG architecture connected to live FDA and RxNorm APIs, featuring a two-stage biomedical embedding pipeline using ModernPubMedBERT and a FastAPI backend that returns structured clinical answers in seconds. Achieved 96% endpoint accuracy and 88% field accuracy on a custom evaluation suite. Looking to bring that same approach to a team working on meaningful AI.</p>
+            </div>
+
+            <div class="section">
+                <h2>Certifications, Skills & Interests</h2>
+                <ul>
+                    <li><strong>Certifications:</strong> CompTIA A+, ITIL 4</li>
+                    <li><strong>Technologies:</strong> Python (FastAPI, Pydantic, httpx), Java (JavaFX, JDBC), JavaScript, HTML/CSS, MySQL</li>
+                    <li><strong>AI / ML:</strong> RAG pipeline design, vector embeddings, semantic search, LLM integration, NLP, SentenceTransformers</li>
+                    <li><strong>Backend:</strong> REST API design, database modeling, input validation, software testing & debugging</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Project Experience</h2>
+                <p><span class="job-title">PharmaAI — Real-Time Drug Safety Intelligence System</span><br>
+                <span class="job-meta">Portfolio Project</span></p>
+                <ul>
+                    <li>Built a natural language system that lets pharmacists ask plain-English questions about drug shortages, recalls and adverse events, returning structured clinical answers in seconds, powered by live FDA data and Gemini.</li>
+                    <li>Designed a two-stage biomedical embedding pipeline (ModernPubMedBERT) for semantic search across FDA databases — achieving 96% endpoint accuracy and 88% field accuracy on a custom evaluation suite.</li>
+                    <li>Tested with a real pharmacist — removed a full NER + BM25 pipeline that scored 94% precision in eval but didn't match real workflow. Shipped a tighter, more reliable product based on that feedback.</li>
+                </ul>
+                <p class="stack">Stack: Python, FastAPI, SentenceTransformers, Gemini API, Pydantic, httpx, openFDA API, RxNorm API</p>
+
+                <p style="margin-top:1.25rem"><span class="job-title">Scheduling & Customer Management System</span><br>
+                <span class="job-meta">Graduation Project</span></p>
+                <ul>
+                    <li>Built a full-featured desktop scheduling and customer management app as sole developer, supporting multiple offices and languages (English/French), with secure user login, multi-timezone scheduling with UTC conversion, and custom reports by month, type, and contact.</li>
+                    <li>Applied advanced Java constructs with input validation, conflict detection, and user activity logging.</li>
+                </ul>
+                <p class="stack">Stack: Java 17, JavaFX, MySQL JDBC, Scene Builder</p>
+            </div>
+
+            <div class="section">
+                <h2>Work Experience</h2>
+                <p><span class="job-title">Pharmacy Technician</span> — CVS Health, Worth, IL<br>
+                <span class="job-meta">2025 — Present</span></p>
+                <ul>
+                    <li>Process patient prescriptions, manage drug inventory through cycle counts, maintain patient information and insurance records in pharmacy management systems, and deliver customer service in a high-volume retail pharmacy environment.</li>
+                    <li>Identified inefficiencies in clinical information retrieval workflows, leading to the development of PharmaAI in collaboration with the pharmacist on staff.</li>
+                </ul>
+            </div>
         </div>
-        
-        <p class="question">Would you hire me?</p>
-        
-        <div class="buttons" id="btns">
-            <button class="yes" onclick="sayYes()">Yes, let's talk</button>
-            <button class="no" onclick="sayNo()">Not right now</button>
-        </div>
-        
-        <div id="msg"></div>
-        
-        <div class="links">
-            <p><a href="https://github.com/Hamayat103" target="_blank">github.com/Hamayat103</a></p>
-            <p style="margin-top:0.4rem">hamayat103@gmail.com • (708) 737-8235</p>
+
+        <!-- INTERACTIVE -->
+        <div class="interactive">
+            <div class="badge">H</div>
+            <h2>Would you hire me?</h2>
+            <p>If this resume caught your eye, let me know — I'll follow up within 24 hours.</p>
+            
+            <div class="buttons" id="btns">
+                <button class="yes" onclick="sayYes()">Yes, let's talk</button>
+                <button class="no" onclick="sayNo()">Not right now</button>
+            </div>
+            
+            <div id="msg"></div>
         </div>
     </div>
 
