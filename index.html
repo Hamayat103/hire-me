@@ -95,15 +95,12 @@
         </div>
     </div>
 
-    <!-- EmailJS: free, no backend needed -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        // Replace with your EmailJS public key after signing up
-        emailjs.init("YOUR_PUBLIC_KEY");
+        emailjs.init("vTB34xT3Ys0TIB16i");
 
         function sayYes() {
-            // Fire off the email
-            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+            emailjs.send("service_d1fksgj", "template_nlkuy67", {
                 to_email: "hamayat103@gmail.com",
                 message: "Someone clicked YES on your hire-me page at " + new Date().toLocaleString()
             }).then(() => {
@@ -124,7 +121,6 @@
                 "<span style='color:#94a3b8'>No worries. Thanks for stopping by!</span>";
         }
 
-        // Simple confetti
         function fireConfetti() {
             const c = document.getElementById("confetti");
             const x = c.getContext("2d");
