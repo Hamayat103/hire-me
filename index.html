@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamed Hasan — Would You Hire Me?</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0b1220;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .card {
+            max-width: 520px;
+            width: 100%;
+            text-align: center;
+        }
+        .badge {
+            width: 80px; height: 80px; border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; font-weight: 700; color: white;
+            margin: 0 auto 1.5rem;
+        }
+        h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+        .location { color: #94a3b8; margin-bottom: 2rem; }
+        .bio {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+        .bio strong { color: #fff; }
+        .question { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem; }
+        .buttons { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+        button {
+            padding: 0.875rem 1.75rem; border: none; border-radius: 8px;
+            font-size: 1rem; font-weight: 600; cursor: pointer;
+            transition: transform 0.15s;
+        }
+        button:hover { transform: translateY(-2px); }
+        .yes {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+        .no {
+            background: rgba(255,255,255,0.08);
+            color: #cbd5e1;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        #msg { margin-top: 1.5rem; font-size: 1.1rem; min-height: 2rem; font-weight: 500; }
+        .links { margin-top: 2.5rem; font-size: 0.85rem; color: #64748b; }
+        .links a { color: #3b82f6; text-decoration: none; }
+        canvas.confetti {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="confetti" id="confetti"></canvas>
+    
+    <div class="card">
+        <div class="badge">H</div>
+        <h1>Hamed Hasan</h1>
+        <p class="location">Software Developer — Chicago, IL</p>
+        
+        <div class="bio">
+            <p>I have a B.S. in Software Development from Western Governors University and work as a pharmacy technician at CVS. After graduating, I built <strong>PharmaAI</strong>, a real-time drug safety intelligence system using FastAPI and biomedical embeddings. Before that, I built a full scheduling and customer management desktop app in Java 17 and JavaFX.</p>
+            <p style="margin-top:0.75rem">I care about clean APIs, real-world usability, and backend systems that actually help people.</p>
+        </div>
+        
+        <p class="question">Would you hire me?</p>
+        
+        <div class="buttons" id="btns">
+            <button class="yes" onclick="sayYes()">Yes, let's talk</button>
+            <button class="no" onclick="sayNo()">Not right now</button>
+        </div>
+        
+        <div id="msg"></div>
+        
+        <div class="links">
+            <p><a href="https://github.com/Hamayat103" target="_blank">github.com/Hamayat103</a></p>
+            <p style="margin-top:0.4rem">hamayat103@gmail.com • (708) 737-8235</p>
+        </div>
+    </div>
+
+    <!-- EmailJS: free, no backend needed -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Replace with your EmailJS public key after signing up
+        emailjs.init("YOUR_PUBLIC_KEY");
+
+        function sayYes() {
+            // Fire off the email
+            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+                to_email: "hamayat103@gmail.com",
+                message: "Someone clicked YES on your hire-me page at " + new Date().toLocaleString()
+            }).then(() => {
+                console.log("Email sent");
+            }).catch((err) => {
+                console.log("Email failed", err);
+            });
+
+            document.getElementById("btns").style.display = "none";
+            document.getElementById("msg").innerHTML = 
+                "<span style='color:#10b981'>🎉 Great! I'll reach out to you shortly.</span>";
+            fireConfetti();
+        }
+
+        function sayNo() {
+            document.getElementById("btns").style.display = "none";
+            document.getElementById("msg").innerHTML = 
+                "<span style='color:#94a3b8'>No worries. Thanks for stopping by!</span>";
+        }
+
+        // Simple confetti
+        function fireConfetti() {
+            const c = document.getElementById("confetti");
+            const x = c.getContext("2d");
+            c.width = window.innerWidth; c.height = window.innerHeight;
+            const p = [], colors = ["#10b981","#3b82f6","#8b5cf6","#f59e0b","#ef4444"];
+            for(let i=0;i<120;i++) p.push({
+                x: Math.random()*c.width, y: Math.random()*c.height - c.height,
+                w: Math.random()*8+4, h: Math.random()*8+4,
+                c: colors[Math.floor(Math.random()*colors.length)],
+                s: Math.random()*3+2, a: Math.random()*Math.PI*2, r: Math.random()*0.2-0.1
+            });
+            function loop() {
+                x.clearRect(0,0,c.width,c.height);
+                let a = false;
+                p.forEach(o => {
+                    o.y += o.s; o.a += o.r; o.x += Math.sin(o.a)*2;
+                    if(o.y < c.height) { a = true; x.fillStyle = o.c; x.fillRect(o.x,o.y,o.w,o.h); }
+                });
+                if(a) requestAnimationFrame(loop);
+            }
+            loop();
+        }
+    </script>
+</body>
+</html>
