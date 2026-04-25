@@ -21,7 +21,6 @@
         a { color: #60a5fa; text-decoration: none; }
         a:hover { text-decoration: underline; }
 
-        /* Resume Section */
         .resume {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.08);
@@ -41,6 +40,7 @@
             color: #94a3b8;
             word-break: break-all;
         }
+        .resume-header .contact a { color: #60a5fa; }
         .section { margin-bottom: 1.5rem; }
         .section h2 {
             font-size: 1.1rem;
@@ -59,7 +59,6 @@
         .job-meta { color: #94a3b8; font-size: 0.85rem; display: block; margin-bottom: 0.5rem; }
         .stack { color: #60a5fa; font-size: 0.85rem; font-style: italic; }
 
-        /* Interactive Section */
         .interactive {
             text-align: center;
             padding: 2rem;
@@ -97,22 +96,17 @@
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none; z-index: 9999;
         }
-        @media print {
-            body { background: #fff; color: #000; }
-            .interactive, canvas { display: none; }
-        }
     </style>
 </head>
 <body>
     <canvas class="confetti" id="confetti"></canvas>
     
     <div class="container">
-        <!-- RESUME -->
         <div class="resume">
             <div class="resume-header">
                 <h1>Hamed Hasan</h1>
                 <p class="contact">
-                    github.com/Hamayat103 | hamayat103@gmail.com | (708) 737-8235 | Chicago, IL
+                    <a href="https://github.com/Hamayat103" target="_blank">github.com/Hamayat103</a> | hamayat103@gmail.com | (708) 737-8235 | Chicago, IL
                 </p>
             </div>
 
@@ -168,7 +162,6 @@
             </div>
         </div>
 
-        <!-- INTERACTIVE -->
         <div class="interactive">
             <div class="badge">H</div>
             <h2>Would you hire me?</h2>
